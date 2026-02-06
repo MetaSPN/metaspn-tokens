@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "metaspn-tokens"
+version = "0.1.0"
+description = "Token resolution and promise registry core for MetaSPN"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "MetaSPN Contributors" }]
+keywords = ["metaspn", "tokens", "promises", "registry", "sqlite"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+  "metaspn-schemas",
+  "metaspn-entities",
+  "metaspn-store",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "build>=1.2.0", "twine>=5.0.0"]
+
+[tool.setuptools]
+packages = ["metaspn_tokens", "metaspn_tokens.adapters"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
