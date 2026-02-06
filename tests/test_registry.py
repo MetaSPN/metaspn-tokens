@@ -2,7 +2,12 @@ from __future__ import annotations
 
 import pytest
 
-from metaspn_tokens import DuplicatePromiseError, PromiseRegistry
+from metaspn_tokens import (
+    DEFAULT_METATOWEL_ADDRESS,
+    DEFAULT_TOWEL_ADDRESS,
+    DuplicatePromiseError,
+    PromiseRegistry,
+)
 
 
 def test_deterministic_promise_id_and_duplicate_rejection() -> None:
@@ -97,3 +102,40 @@ def test_self_registration_for_towel_and_metatowel_end_to_end() -> None:
     summary = registry.credibility_summary("proj_towel")
     assert summary["kept"] == 1
     assert summary["credibility_score"] == 1.0
+
+
+def test_lookup_token_info_by_symbol_and_address() -> None:
+    registry = PromiseRegistry()
+    registry.self_register_defaults(project_id="proj_towel")
+
+    metatowel_by_symbol = registry.get_token_info(symbol="$METATOWEL")
+    assert metatowel_by_symbol is not None
+    assert metatowel_by_symbol.address == DEFAULT_METATOWEL_ADDRESS
+
+    towel_by_address = registry.get_token_info(chain="solana", address=DEFAULT_TOWEL_ADDRESS)
+    assert towel_by_address is not None
+    assert towel_by_address.symbol == "$TOWEL"
+    assert towel_by_address.address == DEFAULT_TOWEL_ADDRESS
+
+
+def test_resolve_by_address_tracks_known_addresses() -> None:
+    registry = PromiseRegistry()
+
+    metatowel = registry.resolver.resolve_by_address(
+        chain="solana",
+        address=DEFAULT_METATOWEL_ADDRESS,
+        project_id="proj_towel",
+    )
+    towel = registry.resolver.resolve_by_address(
+        chain="solana",
+        address=DEFAULT_TOWEL_ADDRESS,
+        project_id="proj_towel",
+    )
+
+    assert metatowel.symbol == "$METATOWEL"
+    assert towel.symbol == "$TOWEL"
+    assert metatowel.address == DEFAULT_METATOWEL_ADDRESS
+    assert towel.address == DEFAULT_TOWEL_ADDRESS
+
+    linked = registry.store.list_tokens_by_project("proj_towel")
+    assert {token.symbol for token in linked} == {"$METATOWEL", "$TOWEL"}

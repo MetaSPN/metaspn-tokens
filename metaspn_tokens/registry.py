@@ -28,6 +28,15 @@ class PromiseRegistry:
     def self_register_defaults(self, project_id: str) -> None:
         self.resolver.self_register_defaults(project_id=project_id)
 
+    def get_token_info(
+        self,
+        *,
+        symbol: str | None = None,
+        chain: str | None = None,
+        address: str | None = None,
+    ):
+        return self.resolver.token_info(symbol=symbol, chain=chain, address=address)
+
     def register(
         self,
         *,

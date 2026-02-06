@@ -8,7 +8,7 @@ from .models import (
     deterministic_promise_id,
 )
 from .registry import DuplicatePromiseError, PromiseRegistry
-from .resolver import TokenResolver
+from .resolver import DEFAULT_METATOWEL_ADDRESS, DEFAULT_TOWEL_ADDRESS, TokenResolver
 from .sqlite_backend import SQLiteTokenStore
 
 __all__ = [
@@ -21,6 +21,8 @@ __all__ = [
     "Token",
     "TokenProjectLink",
     "TokenResolver",
+    "DEFAULT_TOWEL_ADDRESS",
+    "DEFAULT_METATOWEL_ADDRESS",
     "deterministic_promise_id",
     "token_health_scorecard",
 ]

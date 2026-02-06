@@ -17,3 +17,6 @@ class TokenCandidate:
 class TokenAdapter(Protocol):
     def fetch_token(self, symbol: str) -> TokenCandidate | None:
         ...
+
+    def fetch_token_by_address(self, chain: str, address: str) -> TokenCandidate | None:
+        ...

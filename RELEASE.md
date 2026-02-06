@@ -1,5 +1,19 @@
 # Release Notes
 
+## v0.1.1 - 2026-02-06
+
+### Added
+- GitHub Actions trusted publishing workflow at `.github/workflows/publish.yml`.
+- Token resolver support for Solana address-first lookup and resolution.
+- Public exports for default `$TOWEL` / `$METATOWEL` addresses.
+- Registry helper `get_token_info(symbol=... | chain+address=...)`.
+- Adapter support for `fetch_token_by_address`.
+
+### Changed
+- Updated default `$TOWEL` and `$METATOWEL` addresses to canonical pump-style addresses.
+- Added tests covering address-based resolution and token info lookup.
+- Bumped package version to `0.1.1`.
+
 ## v0.1.0 - 2026-02-06
 
 ### Added

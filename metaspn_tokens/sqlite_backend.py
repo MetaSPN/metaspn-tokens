@@ -124,6 +124,23 @@ class SQLiteTokenStore:
             created_at=str(row["created_at"]),
         )
 
+    def get_token_by_chain_address(self, chain: str, address: str) -> Token | None:
+        row = self.conn.execute(
+            "SELECT * FROM tokens WHERE chain = ? AND address = ?",
+            (chain, address),
+        ).fetchone()
+        if not row:
+            return None
+        return Token(
+            token_id=str(row["token_id"]),
+            symbol=str(row["symbol"]),
+            name=str(row["name"]),
+            chain=str(row["chain"]),
+            address=str(row["address"]),
+            metadata=json.loads(str(row["metadata_json"])),
+            created_at=str(row["created_at"]),
+        )
+
     def link_token_project(self, token_id: str, project_id: str, relation: str = "primary") -> TokenProjectLink:
         now = utcnow_iso()
         self.conn.execute(

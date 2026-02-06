@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "metaspn-tokens"
-version = "0.1.0"
+version = "0.1.1"
 description = "Token resolution and promise registry core for MetaSPN"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -25,6 +25,11 @@ dependencies = [
   "metaspn-entities",
   "metaspn-store",
 ]
+
+[project.urls]
+Homepage = "https://github.com/MetaSPN/metaspn-tokens"
+Repository = "https://github.com/MetaSPN/metaspn-tokens"
+Issues = "https://github.com/MetaSPN/metaspn-tokens/issues"
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "build>=1.2.0", "twine>=5.0.0"]
