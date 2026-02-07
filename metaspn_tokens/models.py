@@ -54,6 +54,50 @@ class PromiseEvaluation:
     evaluated_at: str
 
 
+@dataclass(frozen=True)
+class RewardPoolFundingRecord:
+    funding_id: int
+    project_id: str
+    token_id: str
+    amount: float
+    tx_hash: str
+    funded_at: str
+    source: str
+    recorded_by: str
+    recorded_at: str
+
+
+@dataclass(frozen=True)
+class SeasonCredibilitySnapshot:
+    snapshot_id: int
+    project_id: str
+    season: str
+    credibility_score: float
+    delivery_score: float
+    risk_score: float
+    total_promises: int
+    kept: int
+    broken: int
+    pending: int
+    snapshot_at: str
+    recorded_by: str
+    created_at: str
+
+
+@dataclass(frozen=True)
+class FounderDistributionSummary:
+    summary_id: int
+    project_id: str
+    token_id: str
+    founder_wallets: int
+    distributed_amount: float
+    locked_amount: float
+    as_of: str
+    source: str
+    recorded_by: str
+    recorded_at: str
+
+
 def utcnow_iso() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
 

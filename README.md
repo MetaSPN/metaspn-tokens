@@ -9,6 +9,8 @@ and token health feature extraction backed by SQLite.
 - Append-only promise evaluations.
 - PromiseRegistry API for registration, retrieval, evaluation, and credibility summaries.
 - Built-in token adapters for Solana RPC and Pump.fun style lookups.
+- Season 1 canonical metadata linking for `$TOWEL` / `$METATOWEL`.
+- Season 1 lifecycle helper APIs for reward pool funding, founder distribution, and credibility snapshots.
 
 ## Quickstart
 

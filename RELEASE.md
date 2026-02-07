@@ -1,5 +1,27 @@
 # Release Notes
 
+## v0.1.2 - 2026-02-07
+
+### Added
+- Season 1 canonical token metadata linking for `$TOWEL` and `$METATOWEL`.
+- Registry helpers for:
+  - reward pool funding records
+  - founder distribution ledger summaries
+  - season-linked credibility snapshots
+- Season 1 lifecycle entries embedded into evaluation evidence payloads.
+- Season 1 monitoring fields in token health/credibility scorecards.
+- Tests for canonical merge-safe linking and deterministic lifecycle helper behavior.
+
+### Changed
+- Expanded SQLite schema with lifecycle support tables:
+  - `reward_pool_funding`
+  - `season_credibility_snapshots`
+  - `founder_distribution_summaries`
+- Bumped package version to `0.1.2`.
+
+### Removed
+- `WORKORDER-SEASON1.md` from the release artifact.
+
 ## v0.1.1 - 2026-02-06
 
 ### Added
